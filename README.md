@@ -18,8 +18,15 @@ Finally, `docker-compose up`
 To get the gokit-base project up and running you'll need to have a few things installed beforehand:
 1. [Install Go](https://golang.org/doc/install)
 2. [Install Glide](https://github.com/Masterminds/glide#install)
+3. [Install Consul](https://www.consul.io/intro/getting-started/install.html)
 
-Now simply do a git clone of the project into your GOPATH and run `glide install` to get all of the
+Before building the sample application you will need to bootstrap Consul with
+environment configuration and export necessary variables to initialize the app.
+The environment configuration example can be found in the `docker/gokit-base/resources`
+folder. The application's KV path where you will need to PUT to can be found in
+`config/config.go`.
+
+Now, simply do a git clone of the project into your GOPATH and run `glide install` to get all of the
 required dependencies. Finally, run `go build` and `./gokit-base` to start the listening server!
 
 ## Repository and Project Structure
