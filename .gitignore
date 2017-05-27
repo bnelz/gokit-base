@@ -2,6 +2,7 @@ docker/gokit-base/bin
 projectFilesBackup/
 vendor/
 gokit-base
+.idea/
 
 # Created by .ignore support plugin (hsz.mobi)
 Thumbs.db
