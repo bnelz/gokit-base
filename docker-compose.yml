@@ -1,0 +1,16 @@
+version: '2'
+services:
+  app:
+    image: catpipegrep/gokit-base:latest
+    links:
+      - "consul:consul"
+    environment:
+      - CONSUL_HOST=consul
+      - APP_ENV=development
+    ports:
+      - "8081:8081"
+
+  consul:
+    image: consul:latest
+    ports:
+      - 8500:8500
