@@ -10,7 +10,7 @@ import (
 
 	"strconv"
 
-	errs "github.com/Boxx/gokit-base/errors"
+	errs "github.com/bnelz/gokit-base/errors"
 	kitlog "github.com/go-kit/kit/log"
 	kithttp "github.com/go-kit/kit/transport/http"
 	"github.com/gorilla/mux"

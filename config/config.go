@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Boxx/gokit-base/logger"
+	"github.com/bnelz/gokit-base/logger"
 
 	"github.com/spf13/viper"
 	_ "github.com/spf13/viper/remote"
