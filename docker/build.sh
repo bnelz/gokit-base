@@ -7,7 +7,7 @@ APP_NAME="gokit-base"
 TAG_NAME="catpipegrep/gokit-base"
 
 # Your project's module root
-MODULE_ROOT="github.com/Boxx"
+MODULE_ROOT="github.com/bnelz"
 
 # The base directory for this project
 BASE_DIR=$(cd "$(dirname "$0")/../" && pwd)
@@ -19,11 +19,10 @@ PROJECT_BINARY="docker/${APP_NAME}/bin/${APP_NAME}"
 BUILD_PATH="/usr/local/go/src/${MODULE_ROOT}/${APP_NAME}"
 
 # The official golang container link and version for our build container
-BASE_GOLANG_CONTAINER="catpipegrep/golang1.8.3-glide:latest"
+BASE_GOLANG_CONTAINER="golang:1.15"
 
 function HELP {
   echo -e "Options"
-  echo -e "   -i, --install-deps     Sets --install-deps to true. Default is FALSE"
   echo -e "   -c  --compiler-flags   Pass in compiler flags"
   echo -e "   -v  --version          Specify project version"
   echo -e "   -h, --help             Show this help (-h works with no other options)"\\n
@@ -35,7 +34,6 @@ function HELP {
 for arg in "$@"; do
   shift
   case "$arg" in
-    "--install-deps")   set -- "$@" "-i" ;;
     "--compiler-flags") set -- "$@" "-c" ;;
     "--version")        set -- "$@" "-v" ;;
     "--help")           set -- "$@" "-h" ;;
@@ -64,17 +62,6 @@ while getopts "ic:v:h" opt; do
 		;;
 	esac
 done
-
-# Retrieve and install external application dependencies
-if [ $INSTALL_DEPS ]; then
-    echo "Installing dependencies"
-    docker run -it --rm \
-        -v $BASE_DIR:$BUILD_PATH \
-        -v $HOME/.ssh:/root/.ssh \
-        -w $BUILD_PATH \
-        $BASE_GOLANG_CONTAINER \
-        sh -c "glide install"
-fi
 
 # Compile the application
 echo "Compiling ${APP_NAME}..."
