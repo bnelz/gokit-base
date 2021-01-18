@@ -17,8 +17,7 @@ Finally, `docker-compose up`
 ### Local Dev
 To get the gokit-base project up and running you'll need to have a few things installed beforehand:
 1. [Install Go](https://golang.org/doc/install)
-2. [Install Glide](https://github.com/Masterminds/glide#install)
-3. [Install Consul](https://www.consul.io/intro/getting-started/install.html)
+2. [Install Consul](https://www.consul.io/intro/getting-started/install.html)
 
 Before building the sample application you will need to bootstrap Consul with
 environment configuration and export necessary variables to initialize the app.
@@ -26,22 +25,15 @@ The environment configuration example can be found in the `docker/gokit-base/res
 folder. The application's KV path where you will need to PUT to can be found in
 `config/config.go`.
 
-Now, simply do a git clone of the project into your GOPATH and run `glide install` to get all of the
-required dependencies. Finally, run `go build` and `./gokit-base` to start the listening server!
+Finally, run `go build` and `./gokit-base` to start the listening server!
 
 ## Repository and Project Structure
 
-We are using Glide to manage our vendor dependencies. This unfortunately forces us
-into a non-standard Go repository layout. Granted, we believe we have established some
-best practices that can be referenced in this sample application and our other projects in
-the "Mentat" namespace.
 
 ```
 app
 │   .gitignore
 │   docker-compose.yml
-│   glide.yaml
-│   glide.lock
 │   Jenkinsfile
 │   main.go
 │   README.md
@@ -79,7 +71,6 @@ app
 
 - [docker-compose.yml](https://docs.docker.com/compose) describes the composition of application container(s) and
 dependencies as well as any networking considerations.
-- [glide.yml and glide.lock](https://glide.readthedocs.io/en/latest/glide.yaml/) provide a manifest of library dependencies for your project.
 - [Jenkinsfile](https://jenkins.io/doc/book/pipeline/jenkinsfile) contains Jenkins 2 pipeline configuration scripts written in Groovy for CI/CD.
 - The `config/` folder contains your specific application configuration code. This may be something as simple
 as an Environment struct read from Consul or MySQL connection details (also read from Consul). We are currently
