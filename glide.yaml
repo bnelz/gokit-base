@@ -1,4 +1,4 @@
-package: github.com/Boxx/gokit-base
+package: github.com/bnelz/gokit-base
 import:
 - package: github.com/spf13/viper
   subpackages:

@@ -3,8 +3,8 @@ package inmemory
 import (
 	"sync"
 
-	errs "github.com/Boxx/gokit-base/errors"
-	"github.com/Boxx/gokit-base/users"
+	errs "github.com/bnelz/gokit-base/errors"
+	"github.com/bnelz/gokit-base/users"
 )
 
 // inMemUserRepository is an implementation of a user repository for storage in local memory
